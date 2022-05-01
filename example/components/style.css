@@ -1,0 +1,9 @@
+:root {
+  --mode-btn-color: Black;
+}
+x-toggle {
+  box-sizing: border-box;
+  display: block;
+  height: 24px;
+  width: 52px;
+}
