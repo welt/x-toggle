@@ -2,7 +2,7 @@
 
 ## toggles a 'dark-mode' CSS class on the document html element
 
-+ @see examples dir for usage
++ @see [example dir](https://github.com/welt/x-toggle/tree/main/example) for usage
 
 + no dark mode styles included
 
