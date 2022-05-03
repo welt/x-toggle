@@ -1,13 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <title>X-Toggle</title>
-  <meta name="generator" content="BBEdit 14.1" />
-  <link rel="stylesheet" href="components/style.css" media="all">
-</head>
-<body>
-<x-toggle aria-label="Toggle dark mode" role="checkbox" tabindex="0"></x-toggle>
-<script src="components/toggleButton.js"></script>
-</body>
+  <head>
+    <meta charset="utf-8"/>
+    <title>X-Toggle</title>
+    <link rel="stylesheet" href="components/style.css" media="all">
+    <script src="components/toggleButton.js"></script>
+    <script>
+      window
+        .customElements
+        .define('x-toggle', ToggleButton);
+    </script>
+    <script>
+      var currentMode = localStorage.getItem('mode');
+      if (currentMode === 'dark') {
+        document
+          .documentElement
+          .classList
+          .add('dark-mode');
+      }
+    </script>
+  </head>
+  <body>
+    <x-toggle aria-label="Toggle dark mode" role="checkbox" tabindex="0"></x-toggle>
+    <script>
+      document.addEventListener('toggle', () => {
+        document
+          .documentElement
+          .classList
+          .toggle('dark-mode');
+        var mode = (document.documentElement.classList.contains('dark-mode'))
+          ? 'dark'
+          : 'light';
+        localStorage.setItem('mode', mode);
+      });
+    </script>
+  </body>
 </html>
