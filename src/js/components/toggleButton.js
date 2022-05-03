@@ -124,7 +124,7 @@ export default class ToggleButton extends HTMLElement {
   }
 
   // eslint-disable-next-line no-unused-vars
-  onClick(event) {
+  onClick(_event) {
     this.toggleChecked();
     this.constructor.setMode();
   }
@@ -134,19 +134,11 @@ export default class ToggleButton extends HTMLElement {
       return;
     }
     this.checked = !this.checked;
-    this.dispatchEvent(new CustomEvent('change', {
+    this.dispatchEvent(new CustomEvent('toggle', {
       detail: {
         checked: this.checked,
       },
       bubbles: true,
     }));
-  }
-
-  static setMode() {
-    document.documentElement.classList.toggle('dark-mode');
-    const mode = (document.documentElement.classList.contains('dark-mode'))
-      ? 'dark'
-      : 'light';
-    localStorage.setItem('mode', mode);
   }
 }
